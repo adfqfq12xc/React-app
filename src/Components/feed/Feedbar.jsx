@@ -16,12 +16,13 @@ export default function Feedbar({ usernamee }) {
           : await axios.get("/posts/timeline/65225e78a6fc29e0438fd573");
 
         setPost(res.data);
+        console.log(res.data)
       } catch (error) {
         // Handle errors here, e.g., display an error message
         console.error("Error fetching posts:", error);
       }
     };
-    console.log(usernamee)
+   
 
     fetchposts();
   }, [usernamee]);

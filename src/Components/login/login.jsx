@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './login.css'
 import { useRef } from 'react'
+import {Logincall} from "../../apicalls"
+import {Autcontext} from "../../context/authcontext"
 export default function login() {
     const email=useRef()
     const pass=useRef()
+    const {user,isFetching,error,dispatch}=useContext(Autcontext)
+
     const handleclick=(e)=>{
         e.preventDefault()
-        console.log(email.current.value)
-        console.log(pass)
-
+        console.log("clicked")
+        Logincall({email:email.current.value,pass:pass.current.value},dispatch)
+        
     }
   return (
     <div className='login'>
@@ -25,11 +29,12 @@ export default function login() {
                      placeholder='Email' className="logininput" 
                     ref={email} />
 
-                    <input type="Password" required
+                    <input type="Password" 
+                    required
                     minLength={6}
                     className="logininput" placeholder='Password'
                      ref={pass}/>
-                    <button className="loginbutton">Log in</button>
+                    <button className="loginbutton" >Log in</button>
                     <span className="loginForgot">Forgot Password</span>
                     <button className="loginregisterbutton">Create a new account</button>
 

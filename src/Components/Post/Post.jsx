@@ -19,7 +19,8 @@ const likehandler = ()=>{
     useEffect(()=>{
       const fetchuser= async()=>{
      const res=await axios.get(`/users?userid=${post.userid}`)
-     setuser(res.data)  }
+     setuser(res.data) 
+    console.log(res.data) }
      fetchuser()
    },[post.userid])
 
@@ -32,7 +33,7 @@ const likehandler = ()=>{
 
                 <div className="posttopleft">
                     <Link to={`profile/${user.username}`}>
-                        {console.log(user.profilePicture)}
+                        {console.log(user.username)}
                         <img className='postprofileimg' src={user.profilePicture || PF + "heart.png"} alt="" />
                   </Link>
                   <span className="postusername">{user.username || "Unknow"}</span>
