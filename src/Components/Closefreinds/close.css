@@ -1,0 +1,16 @@
+.sidebarfreind{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.sidebarfreindimg{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.sidebarfreindList{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}

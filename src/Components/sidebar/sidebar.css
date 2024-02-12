@@ -1,0 +1,48 @@
+.sidebar{
+    flex:3;
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    position: sticky;
+    top:50px;
+   
+}
+.sidebarwrapper{
+    padding: 20px;
+
+}
+.sidebarlist{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.sidebarlistitem{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.sidebarbutton{
+    width: 150px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.sidebarhr{
+    margin: 20px 0;;
+}
+.sidebarfreindList{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.sidebarfreind{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.sidebarfreindimg{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

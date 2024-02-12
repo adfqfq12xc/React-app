@@ -1,0 +1,103 @@
+.rightbar{
+    flex:4 ;
+    margin-left: 5px;
+    
+}
+.rightbarapper{
+    padding: 20px 20px 0 0;
+}
+.birthdaycontainer{
+    display: flex;
+    align-items: center;
+}
+.birthdayimg{
+    width: 40px;
+    height: 40px;
+    margin-right:20px;
+}
+.birthdaytext{
+    font-weight: 300;
+    font-size: 15px;
+}
+.adpng{
+    width: 90%;
+    border-radius: 10px;
+    margin: 30px 0 ;
+}
+.freindlist{
+margin: 0;
+padding: 0;
+list-style: none;
+}
+.freind{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.profileimgcontainer{
+    margin-right: 10px;
+    position: relative;
+    
+}
+.imgr{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.Title{
+    margin-bottom: 20px;
+}
+.baronline{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    
+    background-color: limegreen;
+    position: absolute;
+    top: -2px;
+    right: 0;
+}
+.username{
+    font-weight: 400;
+}
+
+.rightbartitle{
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.imgfollowing{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.rightbarinfo{
+    margin-bottom: 20px;
+}
+.rightbarinfoitem{
+    margin-bottom: 10px;
+}
+.rightbarinfokey{
+    font-weight: 500;
+    margin-right: 15px;
+    color: #555;
+}
+.rightbarinfoValue{
+    font-weight: 300;
+}
+.rightbarfollowings{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.rightbarfollowing{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
+
