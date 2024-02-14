@@ -5,13 +5,13 @@ import {Logincall} from "../../apicalls"
 import {Autcontext} from "../../context/authcontext"
 export default function login() {
     const email=useRef()
-    const pass=useRef()
+    const password=useRef()
     const {user,isFetching,error,dispatch}=useContext(Autcontext)
 
     const handleclick=(e)=>{
         e.preventDefault()
-        console.log("clicked")
-        Logincall({email:email.current.value,pass:pass.current.value},dispatch)
+
+        Logincall({email:email.current.value,password:password.current.value},dispatch)
         
     }
   return (
@@ -33,8 +33,8 @@ export default function login() {
                     required
                     minLength={6}
                     className="logininput" placeholder='Password'
-                     ref={pass}/>
-                    <button className="loginbutton" >Log in</button>
+                     ref={password}/>
+                    <button className="loginbutton" >{isFetching? "loading" :"Log in"}</button>
                     <span className="loginForgot">Forgot Password</span>
                     <button className="loginregisterbutton">Create a new account</button>
 

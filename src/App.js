@@ -7,13 +7,16 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-
+import { useContext } from 'react';
+import { Autcontext } from './context/authcontext';
+//<Route path="/" element={user ? <Home /> : <Login/>} />
 export default function App() {
+  const {user}=useContext(Autcontext)
+
   return (
+
     <Router>
       <Routes>
-
-        
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile/:username" element={<Profile />} />

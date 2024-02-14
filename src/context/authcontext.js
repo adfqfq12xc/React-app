@@ -12,7 +12,7 @@ export const Authcontextprovider=({children})=>{
         <Autcontext.Provider value={{
             user: state.user,
             isFetching:state.isFetching,
-        error:state.error,
+            error:state.error,
         dispatch,
         }}>
             {children }

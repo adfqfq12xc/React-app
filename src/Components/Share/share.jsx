@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { PermMedia,Label,Room,EmojiEmotions } from '@material-ui/icons'
 import './share.css'
 export default function share() {
+    const desc=useRef();
+    const {file ,setfile}=useState(null)
+    const submithandler=(e)=>{
+        e.preventDefault()
+        const newpost = {
+            userId :user._id,
+            desc:desc.current.value,
+            img:file
+            
+        }
+        try {
+            axios.post("/posts",newpost)
+        }catch(err){
+            consol.log(err)
+        }
+    }
   return (
     <div className='share'>
         <div className="sharewrapper">
@@ -10,12 +26,15 @@ export default function share() {
                 <input placeholder='what is in your mind Ali'  className='shareinput' />
             </div>
             <hr className="sharehr"/>
-            <div className='sharebottom'>
+            <form className='sharebottom'>
                 <div className="shareoptions">
-                    <div className="shareoption">
+                    <label htmlFor='file' className="shareoption">
                         <PermMedia htmlColor='tomato' className='shareicon'/>
                         <span   className='shareoptionText'>Photo or video</span>
-                    </div>
+                        <input style={{display:"none"}} type="file" id ="file" accept=".png , .jpeg ,.jpg"
+                        onChange={(e)=>setfile(e.target.files[0])}
+                        />
+                    </label>
                     <div className="shareoption">
                         <Label htmlColor='blue' className='shareicon'/>
                         <span   className='shareoptionText'>Tag</span>
@@ -28,10 +47,11 @@ export default function share() {
                         <EmojiEmotions htmlColor='goldenroc' className='shareicon'/>
                         <span   className='shareoptionText'>Feelings</span>
                     </div>
-                </div>
-                <button className='sharebutton'>share</button>
+                    </div>
+                </form>
+                <button className='sharebutton' onClick={submithandler}
+                >share</button>
             </div>
             </div>
-        </div>
   )
 }
