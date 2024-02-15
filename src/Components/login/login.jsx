@@ -2,19 +2,34 @@ import React, { useContext } from 'react'
 import './login.css'
 import { useRef } from 'react'
 import {Logincall} from "../../apicalls"
-import {Autcontext} from "../../context/authcontext"
+import { UserContext } from '../../UserContext';
+import {Link} from "react-router-dom"
+
 export default function login() {
+
     const email=useRef()
+    const { user, setUser } = useContext(UserContext);
+
     const password=useRef()
-    const {user,isFetching,error,dispatch}=useContext(Autcontext)
-
-    const handleclick=(e)=>{
-        e.preventDefault()
-
-        Logincall({email:email.current.value,password:password.current.value},dispatch)
+    const handleclick = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
         
-    }
+        try {
+          const response = await Logincall({
+            email: email.current.value,
+            password: password.current.value
+      
+          });
+         await setUser(response.data)
+
+      
+
+        } catch (err) {
+          console.error('Login failed:', err);
+        }
+      };
   return (
+    
     <div className='login'>
         <div className="loginwrapper">
             <div className="loginleft">
@@ -34,9 +49,9 @@ export default function login() {
                     minLength={6}
                     className="logininput" placeholder='Password'
                      ref={password}/>
-                    <button className="loginbutton" >{isFetching? "loading" :"Log in"}</button>
+                    <button className="loginbutton" >Log in</button>
                     <span className="loginForgot">Forgot Password</span>
-                    <button className="loginregisterbutton">Create a new account</button>
+                   <Link to="register"> <button className="loginregisterbutton">Create a new account</button></Link>
 
                 </form>
             </div>

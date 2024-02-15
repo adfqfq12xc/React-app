@@ -1,12 +1,18 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 import App from './App';
 import './index.css';
-import { Authcontextprovider } from './context/authcontext';
+import { UserContext } from "./UserContext";
+
+const Root = () => {
+  const [user, setUser] = useState(null);
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <App />
+
+    </UserContext.Provider>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-      <Authcontextprovider>
-      <App />
-      </Authcontextprovider>
-);
+root.render(<Root />);

@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './topbar.css'
 import {Search,Person,Chat,Notifications} from '@material-ui/icons'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../../UserContext'
+const PF=process.env.REACT_APP_PUBLIC_FOLDER ;
+
 export default function topbar() {
-  return (
+  const user = useContext(UserContext);
+
+  // Check if user is not available yet or is null
+  if (!user) {
+    console.log("user null")
+    return null; // You might want to render something else or handle this case differently
+  } 
+   return (
     <div className='topbarcontainer'>
       <div className="topbarleft">
         <Link to={'/'} style={{ textDecoration: 'none' }}>
@@ -44,7 +54,7 @@ export default function topbar() {
       </div>
 
 
-      <img src="/assets/person/1.jpeg" alt="" className='topbarimg'/>
+      <img src={user.profilePicture ? PF + user.profilePicture : `${PF}/person/2.jpeg`} alt="Profile" className='topbarimg'/>
 
     </div>
   )

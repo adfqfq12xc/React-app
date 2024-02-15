@@ -8,20 +8,21 @@ import {
   Route,
 } from "react-router-dom";
 import { useContext } from 'react';
-import { Autcontext } from './context/authcontext';
-//<Route path="/" element={user ? <Home /> : <Login/>} />
+import { UserContext } from "./UserContext";
+
 export default function App() {
-  const {user}=useContext(Autcontext)
+  const { user } = useContext(UserContext);
+  
+
+
 
   return (
-
     <Router>
       <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile/:username" element={<Profile />} />
-          <Route path="/register" element={<Register />} />
+        <Route path="/" element={user ? <Home /> : <Login />} />    
+        <Route path="/profile/:username" element={<Profile />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
-  )
+  );
 }

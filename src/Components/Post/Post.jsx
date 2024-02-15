@@ -4,6 +4,7 @@ import axios from "axios"
 import { MoreVert } from '@material-ui/icons'
 import {format} from "timeago.js"
 import {Link} from "react-router-dom"
+import { UserContext } from '../../UserContext';
 export default function Post( post) {
 
     const[like,setlike]= useState(post.likes.length)
@@ -15,12 +16,13 @@ const likehandler = ()=>{
     islikedd(!isliked)
 }
     const [user,setuser]=useState([])
+   
 
     useEffect(()=>{
       const fetchuser= async()=>{
-     const res=await axios.get(`/users?userid=${post.userid}`)
+     const res=await axios.get(`/posts/i/${post.userid}`)
      setuser(res.data) 
-    console.log(res.data) }
+    console.log(res) }
      fetchuser()
    },[post.userid])
 
@@ -33,11 +35,11 @@ const likehandler = ()=>{
 
                 <div className="posttopleft">
                     <Link to={`profile/${user.username}`}>
-                        {console.log(user.username)}
-                        <img className='postprofileimg' src={user.profilePicture || PF + "heart.png"} alt="" />
+                        
+                        <img className='postprofileimg' src={PF+user.profilePicture || PF + "heart.png"} alt="" />
                   </Link>
-                  <span className="postusername">{user.username || "Unknow"}</span>
-                  <span className="postusername">{format(user.createdAt)}</span>
+                  <span className="postusername">{user.username }</span>
+                  <span className="postusername">{format(post.createdAt)}</span>
 
                 </div>
                 <div className="posttopright">
@@ -51,6 +53,7 @@ const likehandler = ()=>{
             </div>
             <div className="postbottom">
                 <div className="postbottomleft">
+                    
                     <img src={`${PF}like.png`} className='likepng' onClick={likehandler} alt="" />
                     <img src={`${PF}heart.png`}  className='likepng' onClick={likehandler} alt="" />
                     <span className="counter">{like} PEOPLE LIKE IT</span>
